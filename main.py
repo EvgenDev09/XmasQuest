@@ -2,11 +2,6 @@ import json
 import keyboard
 import os
 
-from colorama import init as colorama_init
-from colorama import Fore
-
-colorama_init()
-
 def get_json(file: str):
     data = {}
     with open(file, 'r', encoding="utf-8") as f:
