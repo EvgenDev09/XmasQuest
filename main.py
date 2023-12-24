@@ -2,6 +2,11 @@ import json
 import keyboard
 import os
 
+from colorama import init as colorama_init
+from colorama import Fore
+
+colorama_init()
+
 def get_json(file: str):
     data = {}
     with open(file, 'r', encoding="utf-8") as f:
@@ -47,28 +52,39 @@ def print_field():
     for i in range(room["x"], room["x"] + room["a"]):
         for j in range(room["y"], room["y"] + room["b"]):
             if field["field"][i][j] == field["symbols"]["wall"]["in-file"]:
-                print(field["symbols"]["wall"]["in-game"], end=" ")
+                print(f'\x1b[1;{field["symbols"]["wall"]["color"]};40m', end="")
+                print(field["symbols"]["wall"]["in-game"], end="")
             elif field["field"][i][j] == field["symbols"]["space"]["in-file"] or field["field"][i][j] == field["symbols"]["player"]["in-file"]:
                 if i == x and j == y:
-                    print(field["symbols"]["player"]["in-game"], end=" ")
+                    print(f'\x1b[1;{field["symbols"]["player"]["color"]};40m', end="")
+                    print(field["symbols"]["player"]["in-game"], end="")
                 else:
-                    print(field["symbols"]["space"]["in-game"], end=" ")
+                    print(f'\x1b[1;{field["symbols"]["space"]["color"]};40m', end="")
+                    print(field["symbols"]["space"]["in-game"], end="")
             elif field["field"][i][j] == field["symbols"]["present"]["in-file"]:
-                print(field["symbols"]["present"]["in-game"], end=" ")
+                print(f'\x1b[1;{field["symbols"]["present"]["color"]};40m', end="")
+                print(field["symbols"]["present"]["in-game"], end="")
             elif field["field"][i][j] in field["symbols"]["doors"].keys():
                 if i == x and j == y:
-                    print(field["symbols"]["player"]["in-game"], end=" ")
+                    print(f'\x1b[1;{field["symbols"]["player"]["color"]};40m', end="")
+                    print(field["symbols"]["player"]["in-game"], end="")
                 else:
-                    print(field["symbols"]["space"]["in-game"], end=" ")
+                    print(f'\x1b[1;{field["symbols"]["space"]["color"]};40m', end="")
+                    print(field["symbols"]["space"]["in-game"], end="")
             elif field["field"][i][j] in field["symbols"]["signs"]["in-file"].keys():
-                print(field["symbols"]["signs"]["in-game"], end=" ")
+                print(f'\x1b[1;{field["symbols"]["signs"]["color"]};40m', end="")
+                print(field["symbols"]["signs"]["in-game"], end="")
             elif field["field"][i][j] in field["symbols"]["characters"].keys():
-                print(field["field"][i][j], end=" ")
+                print(f'\x1b[1;{field["symbols"]["characters"]["color"]};40m', end="")
+                print(field["field"][i][j], end="")
             else:
                 if i == x and j == y:
+                    print(f'\x1b[1;{field["symbols"]["player"]["color"]};40m', end="")
                     print(field["symbols"]["player"]["in-game"], end=" ")
                 else:
+                    print(f'\x1b[1;{field["symbols"]["space"]["color"]};40m', end="")
                     print(field["symbols"]["space"]["in-game"], end=" ")
+            print(f'\x1b[0m', end=" ")
         print()
     previous_cell = field["field"][x][y]
     previous_room = room_num
