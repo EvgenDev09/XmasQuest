@@ -29,7 +29,6 @@
     "2": [0, 2]
   },
   "characters": {
-    "in-file": {
     "@": {
       "name": "You",
       "dialog": null
@@ -37,7 +36,6 @@
     "C": {
       "name": "Santa",
       "dialog": 0
-    }
     }
   },
   "signs": {
