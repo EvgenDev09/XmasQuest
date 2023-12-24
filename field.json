@@ -8,7 +8,7 @@
   "X...#....X..#....X.X",
   "X..XXXX..X....X...#X",
   "X........2.X..#...XX",
-  "X..dO....2.....X...X",
+  "X..d@....2.....X...X",
   "X........2..X..#...X",
   "X..XXXX..X.#....X..X",
   "X...#...CX...X...#.X",
@@ -20,16 +20,15 @@
   {"x": 3, "y": 9, "a": 9, "b": 11}
   ],
   "symbols": {
-  "wall": {"in-file": "X", "in-game": "X"},
-  "space": {"in-file": ".", "in-game": "."},
-  "player": {"in-file": "@", "in-game": "@"},
-  "present": {"in-file": "#", "in-game": "#"},
+  "wall": {"in-file": "X", "in-game": "X", "color": 31},
+  "space": {"in-file": ".", "in-game": ".", "color": 90},
+  "player": {"in-file": "@", "in-game": "@", "color": 36},
+  "present": {"in-file": "#", "in-game": "#", "color": 32},
   "doors": {
     "1": [0, 1],
     "2": [0, 2]
   },
   "characters": {
-    "in-file": {
     "@": {
       "name": "You",
       "dialog": null
@@ -37,15 +36,17 @@
     "C": {
       "name": "Santa",
       "dialog": 0
-    }
-    }
+    },
+    "color": 33
   },
   "signs": {
     "in-file": {
-    "d": "Move your Character using WASD or Arrow Keys",
-    "t": "Here's a Present for You!"
+      "d": "Move your Character using WASD or Arrow Keys",
+      "t": "Here's a Present for You!"
     },
-    "in-game": "T"
+    "in-game": "T",
+    "color": 35
+  }
   },
   "dialogs": [
     [
@@ -54,5 +55,4 @@
     ["@", "Santa is not real..."]
     ]
   ]
-  }
 }
