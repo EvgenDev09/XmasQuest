@@ -1,6 +1,5 @@
 import json
 import keyboard
-import time
 
 def get_json(file: str):
     data = {}
