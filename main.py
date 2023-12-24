@@ -13,7 +13,14 @@ def replace_json(file: str, data) -> None:
         json.dump(data, f)
 
 field = get_json('field.json')
-x, y = 7, 4
+x, y = -1, -1
+for i in range(field["height"]):
+    for j in range(field["width"]):
+        if field["field"][i][j] == field["symbols"]["player"]["in-file"]:
+            x, y = i, j
+            break
+    if x != -1:
+        break
 previous_room = 0
 previous_cell = "."
 
@@ -24,7 +31,7 @@ def get_rooms():
     for i, j in enumerate(field["rooms"]):
         if j["x"] <= x < j["x"] + j["a"] and j["y"] <= y < j["y"] + j["b"]:
             return [i]
-    return 0
+    return [0]
 
 def print_field():
     global previous_cell, previous_room
