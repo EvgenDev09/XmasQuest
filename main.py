@@ -32,8 +32,8 @@ previous_cell = "."
 last_interaction_type = "none"
 last_interaction_num = -1
 last_interaction_other = -1
-about_gifts = True
-about_count = True
+about_gifts = False
+about_count = False
 
 def get_rooms():
     for c, i in field["symbols"]["doors"].items():
@@ -165,11 +165,16 @@ def change_position(dx, dy):
     print_field()
 
 def interact():
-    global last_interaction_other, last_interaction_type, last_interaction_num, gift_count
+    global last_interaction_other, last_interaction_type, last_interaction_num, gift_count, about_count, about_gifts
     if gift_count == total_gifts:
         return
     if last_interaction_type == "character" and last_interaction_other < len(field["dialogs"][last_interaction_num]):
         last_interaction_other += 1
+        if last_interaction_num == 0 and last_interaction_other == 5:
+            about_gifts = True
+        elif last_interaction_num == 1 and last_interaction_other == 4:
+            about_gifts = True
+            about_count = True
         print_field()
     elif last_interaction_type == "none":
         for d in [[1, 0], [0, 1], [-1, 0], [0, -1]]:
