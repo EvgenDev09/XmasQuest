@@ -2,7 +2,6 @@ import json
 import keyboard
 import os
 import time
-import sys
 
 def get_json(file: str):
     data = {}
@@ -199,13 +198,93 @@ def interact():
                 print_field()
                 break
 
+def print_letter(letter):
+    if letter == 'H':
+        return ['█   █', '█   █', '█████', '█   █', '█   █']
+    elif letter == 'A':
+        return [' ███ ', '█   █', '█████', '█   █', '█   █']
+    elif letter == 'P':
+        return ['████ ', '█   █', '████ ', '█    ', '█    ']
+    elif letter == 'Y':
+        return ['█   █', ' █ █ ', '  █  ', '  █  ', '  █  ']
+    elif letter == 'N':
+        return ['█   █', '██  █', '█ █ █', '█  ██', '█   █']
+    elif letter == 'E':
+        return ['█████', '█    ', '█████', '█    ', '█████']
+    elif letter == 'W':
+        return ['█   █', '█   █', '█ █ █', '██ ██', '█   █']
+    elif letter == 'R':
+        return ['████ ', '█   █', '████ ', '█ █  ', '█   █']
+    elif letter == '0':
+        return [' ███ ', '█  ██', '█ █ █', '██  █', ' ███ ']
+    elif letter == '2':
+        return [' ███ ', '█   █', '  ██ ', ' █   ', '█████']
+    elif letter == '3':
+        return ['████ ', '    █', '  ██ ', '    █', '████ ']
+    elif letter == '4':
+        return ['█  █ ', '█  █ ', '█████', '   █ ', '   █ ']
+    else:
+        return ['     ', '     ', '     ', '     ', '     ']
+
+def print_word(word, color):
+    print(f'\x1b[1;{color};40m', end='')
+    for i in range(5):
+        for letter in word:
+            print(print_letter(letter)[i], end='  ')
+        print()
+
 def ending():
     os.system('cls')
-    print("\x1B[1;33;40mСпасибо за Прохождение игры!\x1B[0m")
-    time.sleep(1)
-    print("\x1b[1;31;40mX\x1b[0m-\x1b[1;32;40mmas\x1b[0m \x1b[1;36;40mQuest\x1b[0m")
+    print_word('HAPPY', 31)
     print()
+    time.sleep(1)
+    print_word('NEW', 32)
+    print()
+    time.sleep(1)
+    print_word('YEAR', 33)
+    print()
+    time.sleep(1)
+    for i in range(5):
+        print(f'\x1b[1;36;40m', end='')
+        for letter in "202":
+            print(print_letter(letter)[i], end='  ')
+        print(f'\x1b[1;31;40m', end='')
+        print(print_letter("3")[i])
+    time.sleep(1)
+    for j in range(5):
+        os.system('cls')
+        print_word('HAPPY', 31)
+        print()
+        print_word('NEW', 32)
+        print()
+        print_word('YEAR', 33)
+        print()
+        for i in range(5):
+            print(f'\x1b[1;36;40m', end='')
+            for letter in "202":
+                print(print_letter(letter)[i], end='  ')
+            if i <= j:
+                print(print_letter("4")[4 - j + i])
+            else:
+                print(f'\x1b[1;31;40m', end='')
+                print(print_letter("3")[i - j])
+        time.sleep(0.2)
+        print()
     time.sleep(2)
+    print("\x1B[1;33;40mСпасибо за Прохождение игры!\x1B[0m")
+    print()
+    time.sleep(1)
+    print("\x1b[1;31;40mX\x1b[0m-\x1b[1;32;40mmas\x1b[0m \x1b[1;36;40mQuest\x1b[0m от:")
+    time.sleep(1)
+    print("\x1b[1;31;40mЛиппа Евгений\x1b[0m (Кодинг, Поле, Диалоги)")
+    time.sleep(0.25)
+    print("\x1b[1;32;40mДорошкевич Глеб\x1b[0m (Кодинг)")
+    time.sleep(0.25)
+    print("\x1b[1;33;40mНовицкий Максим\x1b[0m (Поле, Диалоги)")
+    time.sleep(0.25)
+    print("\x1b[1;36;40mТуровец Степан\x1b[0m (Поле)")
+    print()
+    time.sleep(3)
     print("\x1b[1;90;40mНажмите Q, чтобы выйти из игры...\x1b[0m")
 
 pressedQ = False
